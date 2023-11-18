@@ -21,13 +21,14 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jetpackmovieapp.ui.theme.JetPackMovieAppTheme
+import com.navigation.movieNavigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             myApp {
-                mainContent()
+                movieNavigation()
             }
         }
     }
@@ -35,39 +36,13 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun myApp(content: @Composable () -> Unit) {
-    Scaffold(topBar = {
-        TopAppBar(backgroundColor = Color.Magenta, elevation = 5.dp) {
-            Text("Movies")
-        }
-
-    }) {
+    JetPackMovieAppTheme {
         content()
     }
 }
 
 @Composable
-fun mainContent(
-    movieList: List<String> = listOf(
-        "Avatar",
-        "300",
-        "Harry Potter",
-        "Life"
-    )
-) {
-    Column(modifier = Modifier.padding(12.dp)) {
-        LazyColumn {
-            items(movieList) {
-                movieRow(movie = it){ movie ->
-                    Log.d("TAG", "$movie")
-
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun movieRow(movie: String , onItemClick : (String) -> Unit = {}) {
+fun movieRow(movie: String, onItemClick: (String) -> Unit = {}) {
     Card(
         modifier = Modifier
             .padding(4.dp)
@@ -89,7 +64,7 @@ fun movieRow(movie: String , onItemClick : (String) -> Unit = {}) {
                 shape = RectangleShape,
                 elevation = 4.dp
             ) {
-                Icon(imageVector = Icons.Default.AccountBox, contentDescription ="movie image" )
+                Icon(imageVector = Icons.Default.AccountBox, contentDescription = "movie image")
 
             }
             Text(movie)
@@ -101,6 +76,6 @@ fun movieRow(movie: String , onItemClick : (String) -> Unit = {}) {
 @Composable
 fun DefaultPreview() {
     myApp {
-        mainContent()
+        movieNavigation()
     }
 }
