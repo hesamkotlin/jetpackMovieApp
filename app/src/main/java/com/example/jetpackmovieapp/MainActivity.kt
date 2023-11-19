@@ -40,7 +40,6 @@ fun myApp(content: @Composable () -> Unit) {
         content()
     }
 }
-
 @Composable
 fun movieRow(movie: String, onItemClick: (String) -> Unit = {}) {
     Card(

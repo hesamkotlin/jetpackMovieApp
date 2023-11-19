@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.jetpackmovieapp.movieRow
+import com.navigation.MovieScreens
 
 @Composable
 fun HomeScreen(navController: NavController) {
@@ -41,7 +42,8 @@ fun mainContent(
         LazyColumn {
             items(movieList) {
                 movieRow(movie = it) { movie ->
-                    Log.d("TAG", "$movie")
+//                    Log.d("TAG", "$movie")
+                    navController.navigate(MovieScreens.DetailsScreen.name)
 
                 }
             }
