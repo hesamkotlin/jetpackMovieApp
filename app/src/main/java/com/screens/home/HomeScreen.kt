@@ -41,9 +41,8 @@ fun mainContent(
     Column(modifier = Modifier.padding(12.dp)) {
         LazyColumn {
             items(movieList) {
-                movieRow(movie = it) { movie ->
-//                    Log.d("TAG", "$movie")
-                    navController.navigate(MovieScreens.DetailsScreen.name)
+                movieRow(movie = it ) { movie ->
+                    navController.navigate(route = MovieScreens.DetailsScreen.name+"/$movie/50")
 
                 }
             }

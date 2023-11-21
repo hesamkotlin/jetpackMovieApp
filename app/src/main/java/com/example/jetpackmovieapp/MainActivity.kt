@@ -41,7 +41,7 @@ fun myApp(content: @Composable () -> Unit) {
     }
 }
 @Composable
-fun movieRow(movie: String, onItemClick: (String) -> Unit = {}) {
+fun movieRow(movie: String,onItemClick: (String) -> Unit = {} ) {
     Card(
         modifier = Modifier
             .padding(4.dp)
