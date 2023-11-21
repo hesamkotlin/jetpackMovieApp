@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -16,8 +17,8 @@ import androidx.navigation.NavController
 fun DetailsScreen(navController: NavController, movieData: String?, ticketPrice: Int?) {
     Surface(
         modifier = Modifier
-           .fillMaxWidth()
-           .fillMaxHeight()
+            .fillMaxWidth()
+            .fillMaxHeight()
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -25,6 +26,9 @@ fun DetailsScreen(navController: NavController, movieData: String?, ticketPrice:
         ) {
             Text(text = movieData.toString(), style = MaterialTheme.typography.h5)
             Text(text = ticketPrice.toString())
+            Button(onClick = {navController.popBackStack()}) {
+                Text(text = "Go Back")
+            }
         }
 
     }
